@@ -1,6 +1,6 @@
 # Changelog
 
 
-## [Verzia 1.1]
+## [Verzia 1.2]
 -pridelené číslo 24
 
