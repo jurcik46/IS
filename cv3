@@ -69,15 +69,15 @@ resources:
   Jump:
     type: OS::Nova::Server
     properties:
-      name: jmp
-      availability_zone: conpute1
+      name: jump
+      availability_zone: compute1
       flavor: linux
       image: ubuntu_server_18.04_amd64_OpenStack
-      user_data_update_policy: RELASE
+      user_data_update_policy: REPLACE
       key_name: Brano
       network:
-        - subnet:{ get_resource: Subnet }
+        - subnet:{ get_resource: PrivateSubnet }
       user_data_format: RAW
       user_data:
-        #!/bin/batch
+        #!/bin/bash
         apt-get update -y
