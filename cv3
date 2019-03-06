@@ -53,15 +53,15 @@ resources:
       }
 
   RouterPort:
-    type: Os::Neutron::Net
+    type: OS::Neutron::Port
     properties:
       name: RouterPort
       fixed_ips:
-        -ip_address: 10.0.0.1
-      network: { get_resource: Router }
+        - ip_address: 10.0.0.1
+      network: { get_resource: Net }
 
   RouterInterface:
     type: OS::Neutron::RouterInterface
-    properies:
+    properties:
       router: { get_resource: Router }
       port: { get_resource: RouterPort }
