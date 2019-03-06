@@ -75,8 +75,8 @@ resources:
       image: ubuntu_server_18.04_amd64_OpenStack
       user_data_update_policy: REPLACE
       key_name: Brano
-      network:
-        - subnet:{ get_resource: PrivateSubnet }
+      networks:
+        - subnet: { get_resource: PrivateSubnet }
       user_data_format: RAW
       user_data:
         #!/bin/bash
