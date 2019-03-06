@@ -1,26 +1,21 @@
 heat_template_version: rocky
 
 
-  RouterName:
-    description: RouterName
-    type: string
-    default: router
-
 resources:
   Net:
     type: OS:Neutron:Net
     properties:
       admin_state_up: True
-      name: { get_param: NetName }
+      name: network
       shared: True
 
   PrivateSubnet:
     type: OS:Neutron:Subnet
     properties:
-      name: { list_join: { '-', { 'proxy', { get_param: 'Environment' }, 'private-subnet' }}}
-      cidr: { get_param: PrivateRouterCidr }
+      name: subnet
+      cidr: 10.0.0.0/24
       dns_nameservers:
         -8.8.8.8
         -8.8.4.4
       enable_dhcp: True
-      network: { get_param: NatId }
+      network: { get_param: Net }
