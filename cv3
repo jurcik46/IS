@@ -3,14 +3,14 @@ heat_template_version: rocky
 
 resources:
   Net:
-    type: OS:Neutron:Net
+    type: OS::Neutron::Net
     properties:
       admin_state_up: True
       name: network
       shared: True
 
   PrivateSubnet:
-    type: OS:Neutron:Subnet
+    type: OS::Neutron::Subnet
     properties:
       name: subnet
       cidr: 10.0.0.0/24
