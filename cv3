@@ -7,7 +7,7 @@ resources:
     properties:
       admin_state_up: True
       name: network
-      shared: True
+      shared: False
 
   PrivateSubnet:
     type: OS::Neutron::Subnet
@@ -15,7 +15,7 @@ resources:
       name: subnet
       cidr: 10.0.0.0/24
       dns_nameservers:
-        -8.8.8.8
-        -8.8.4.4
+        - 8.8.8.8
+        - 8.8.4.4
       enable_dhcp: True
-      network: { get_param: Net }
+      network: { get_resource: Net }
