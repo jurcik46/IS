@@ -26,6 +26,6 @@ resources:
       admin_state_up: True
       name: Router
       external_gateway_info: {
-          enable_snat: True
-          network: ext-net
+        enable_snat: True
+        network: ext-net
       }
