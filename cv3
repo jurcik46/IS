@@ -1,0 +1,26 @@
+
+
+
+  RouterName:
+    description: RouterName
+    type: string
+    default: router
+
+resources:
+  Net:
+    type: OS:Neutron:Net
+    properties:
+      admin_state_up: True
+      name: { get_param: NetName }
+      shared: True
+
+  PrivateSubnet:
+    type: OS:Neutron:Subnet
+    properties:
+      name: { list_join: { '-', { 'proxy', { get_param: 'Environment' }, 'private-subnet' }}}
+      cidr: { get_param: PrivateRouterCidr }
+      dns_nameservers:
+        -8.8.8.8
+        -8.8.4.4
+      enable_dhcp: True
+      network: { get_param: NatId }
